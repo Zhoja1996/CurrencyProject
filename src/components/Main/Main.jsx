@@ -1,12 +1,14 @@
+import { NavLink } from "react-router-dom";
+
 const Main = () => {
     return (
-        <main className="py-12">
+        <main className="py-30 media-main">
             <div className="px-6 text-center text-white">
                 <h2 className="text-4xl font-semibold mb-4">Ласкаво просимо на сайт про валюти!</h2>
-                <p className="text-lg mb-6">На нашому сайті ви знайдете актуальні курси валют та зручний конвертер для переведення між різними валютами.</p>
+                <p className="text-lg mb-6">На цьому сайті ви знайдете актуальні курси валют та зручний конвертер для переведення між різними валютами.</p>
 
-                <div className="p-18 grid md:grid-cols-3 gap-8 mb-8 text-white">
-                    <div className="p-10 rounded-lg shadow-lg">
+                <div className="p-18 grid lg:grid-cols-3 gap-8 mb-8 text-white">
+                    <div className="p-10 bg-black/50 backdrop-blur-md rounded-xl shadow-lg">
                         <h3 className="text-2xl font-semibold mb-4">Популярні валюти</h3>
                         <ul className="space-y-2">
                             <li>💵 USD - Долар США</li>
@@ -15,15 +17,15 @@ const Main = () => {
                             <li>💴 JPY - Японська єна</li>
                         </ul>
                     </div>
-                    <div className="p-10 rounded-lg shadow-lg">
+                    <div className="p-10 bg-black/50 backdrop-blur-md rounded-xl shadow-lg">
                         <h3 className="text-2xl font-semibold mb-4">Курси валют</h3>
                         <p className="text-lg mb-4">Отримуйте актуальні дані по курсах валют прямо на головній сторінці.</p>
-                        <a href="#rates" className="text-blue-600 font-bold hover:underline">Перейти до курсів валют →</a>
+                        <NavLink to='/currency' className="text-blue-600 font-bold hover:underline">Перейти до курсів валют →</NavLink>
                     </div>
-                    <div className="p-10 rounded-lg shadow-lg">
+                    <div className="p-10 bg-black/50 backdrop-blur-md rounded-xl shadow-lg">
                         <h3 className="text-2xl font-semibold mb-4">Конвертер валют</h3>
                         <p className="text-lg mb-4">Використовуйте наш конвертер для швидкого переведення валют.</p>
-                        <a href="#converter" className="text-blue-600 font-bold hover:underline">Перейти до конвертера →</a>
+                        <NavLink to='currencyConverter' className="text-blue-600 font-bold hover:underline">Перейти до конвертера →</NavLink>
                     </div>
                 </div>
 
