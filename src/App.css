@@ -27,7 +27,7 @@
 
 
 @media (max-width: 1000px) {
-    .media-navbar div p {
+    .meida-navbar div a {
         font-size: 18px;
     }
 
@@ -50,8 +50,14 @@
     }
 }
 
+@media (max-width: 850px) {
+    .meida-navbar div a {
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 786px) {
-    .media-navbar div p {
+    .media-navbar div  a{
         font-size: 16px;
     }
 
@@ -80,9 +86,6 @@
         background-size: 402%;
     }
 
-}
-
-@media (max-width: 640px) {
     .media-navbar {
         display: flex;
         justify-content: center;
@@ -110,6 +113,10 @@
         flex-direction: column;
         margin-top: 12px;
     }
+
+}
+
+@media (max-width: 640px) {
 
     .media-main h2 {
         font-size: 28px;
