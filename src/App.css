@@ -1,13 +1,5 @@
 @import "tailwindcss";
 
-
-.custom-bg {
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-}
-
-
 @theme {
     --color-primary: #00008B;
 }
