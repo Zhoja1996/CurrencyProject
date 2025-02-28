@@ -4,7 +4,7 @@ import Spinner from "../spinner/spinner";
 
 const CurrencyList = () => {
     const { data, loading, error } = useCurrency();
-    const [currentItems, setCurrentItems] = useState(15); // Количество элементов на странице
+    const [currentItems] = useState(15); // Количество элементов на странице
     const [currentPage, setCurrentPage] = useState(1); // Текущая страница
     const [value, setValue] = useState('');
     const [filterActive, setFilterActive] = useState(false);
@@ -60,21 +60,27 @@ const CurrencyList = () => {
         success: (
             <div className="container mx-auto p-10 min-h-screen">
                 <div className="flex flex-col items-center justify-center mb-10">
-                    <h1 className="text-white text-4xl font-bold text-center mb-10">Курси валют</h1>
-                    <input 
-                        type="text"
-                        value={value}
-                        onChange={(e) => changeFilterActive(e.target.value)}
-                        placeholder="Введіть валюту..." 
-                        className="w-full p-3 rounded-xl border border-gray-300 focus:border-black focus:ring-2 focus:ring-black shadow-sm transition-all duration-300 outline-none bg-white/80 backdrop-blur-md text-black placeholder-gray-500"
-                    />
-                </div>
+                <h1 className="text-white text-4xl font-bold text-center mb-10">Курси валют</h1>
+                <input
+                    type="text"
+                    value={value}
+                    onChange={(e) => {
+                        const newValue = e.target.value;
+                        if (/^[A-Za-zА-Яа-я.\-/]{0,5}$/.test(newValue)) {
+                            changeFilterActive(newValue);
+                        }
+                    }}
+                    placeholder="Введіть валюту..."
+                    className="w-full p-3 rounded-xl border border-gray-300 focus:border-black focus:ring-2 focus:ring-black shadow-sm transition-all duration-300 outline-none bg-white/80 backdrop-blur-md text-black placeholder-gray-500"
+                />
+            </div>
+
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {renderItems()}
                 </div>
 
-                <div className="flex justify-center mt-6 flex-col sm:flex-row items-center">
+                <div className={`${totalPages <= 1 ? 'hidden' : 'flex'} + justify-center mt-6 flex-col sm:flex-row items-center`}>
                     <button
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
