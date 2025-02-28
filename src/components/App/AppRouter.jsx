@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import BaseLayout from "./layouts/BaseLayout";
 import MainPage from "../../Pages/MainPage/MainPage";
-import InfoPage from "../../Pages/CurrencyPage/CurrencyPage";
+import CurrencyPage from "../../Pages/CurrencyPage/CurrencyPage";
+import CurrencyExchangePage from "../../Pages/CurrencyExchangePage/CurrencyExchangePage";
 
 const AppRouter = createBrowserRouter([
     {
@@ -9,9 +10,9 @@ const AppRouter = createBrowserRouter([
         errorElement: <div>Error</div>,
         children: [
             {path: '/', element: <MainPage/>},
-            {path: '/currency', element: <InfoPage/>},
-            {path: '/currencyConverter', element: <InfoPage/>},
-            {path: '/contacts', element: <InfoPage/>},
+            {path: '/currency', element: <CurrencyPage/>},
+            {path: '/currencyConverter', element: <CurrencyExchangePage/>},
+            // {path: '/contacts', element: <CurrencyExchangePage/>},
         ]
     }
 ])
