@@ -12,7 +12,6 @@ const AppRouter = createBrowserRouter([
             {path: '/', element: <MainPage/>},
             {path: '/currency', element: <CurrencyPage/>},
             {path: '/currencyConverter', element: <CurrencyExchangePage/>},
-            // {path: '/contacts', element: <CurrencyExchangePage/>},
         ]
     }
 ])
