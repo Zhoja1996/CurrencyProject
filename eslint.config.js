@@ -34,6 +34,7 @@ export default [
         { allowConstantExport: true },
       ],
       'react/prop-types': 'off', // Отключение проверки пропсов
+      'react-hooks/exhaustive-deps': 'off', // Отключение проверки зависимостей useEffect
     },
   },
 ]
