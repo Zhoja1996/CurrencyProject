@@ -1,7 +1,8 @@
+import { useEffect, useRef, useState } from 'react';
+
 import CurrencyExchangeBlock from '../CurrencyExchangeBlock/CurrencyExchangeBlock'
 import swap_icon from '../../assets/img/swap_icon.svg'
-
-import { useEffect, useRef, useState } from 'react';
+import useCurrency from '../helpers/hooks/useCurrency';
 
 const CurrencyExchange = () => {
 
@@ -12,24 +13,19 @@ const CurrencyExchange = () => {
 
     const ratesRef = useRef({})
 
-    useEffect(() => {
-        fetch('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')
-            .then((res) => res.json())
-            .then((json) => {
-                // Преобразуем массив в объект { cc: rate }
-                const ratesObject = json.reduce((acc, item) => {
-                    acc[item.cc] = item.rate;
-                    return acc;
-                }, {});
-                ratesRef.current = ratesObject;
-                onChangeToPrice(1);
-                console.log(ratesRef.current);
-                
-            })
-            .catch((error) => console.error('Ошибка при загрузке данных:', error));
-    }, []);
+    const { data } = useCurrency();
 
-    // console.log(rates);
+    useEffect(() => {
+        if (data) {
+            ratesRef.current = data.reduce((acc, item) => {
+                acc[item.cc] = item.rate;
+                return acc;
+            }, {});
+            onChangeToPrice(1);
+
+            console.log(ratesRef.current);
+        }
+    }, [data]);
 
     const onChangeFromPrice = (value) => {
         const price = value * ratesRef.current[fromCurrency];
@@ -54,13 +50,14 @@ const CurrencyExchange = () => {
     
     return (
         <div className="flex justify-center items-center min-h-screen">
-            <div className="flex justify-center gap-5 items-center">
+            <div className="flex flex-col justify-center gap-5 items-center xl:flex-row">
                 <CurrencyExchangeBlock 
                     value={fromPrice}
                     currency={fromCurrency}
                     onChangeCurrency={setFromCurrency}
                     onChangeValue={onChangeFromPrice}
                     ratesRef={ratesRef}/>
+                    
                 <img src={swap_icon}/>
 
                 <CurrencyExchangeBlock
